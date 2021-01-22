@@ -4,7 +4,8 @@
 #define N 256
 
 __global__ void vector_add(double *a, double *b, double *c) {
-  c[threadIdx.x] = a[threadIdx.x] + b[threadIdx.x]; 
+  if (threadIdx.x < N) 
+    c[threadIdx.x] = a[threadIdx.x] + b[threadIdx.x]; 
 }
 
 int main() {
