@@ -23,9 +23,7 @@ int main() {
 
   #pragma omp parallel for
   for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      c[i] = a[i] + b[i];
-    }
+    c[i] = a[i] + b[i];
   }
 
   std::cout << "Solution Vector:\n";
