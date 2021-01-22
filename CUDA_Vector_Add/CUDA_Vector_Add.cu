@@ -10,7 +10,7 @@ __global__ void vector_add(double *a, double *b, double *c) {
 
 int main() {
   double *a, *b, *c;
-  int size = N * sizeof(double)
+  int size = N * sizeof(double);
 
   cudaMalloc((void **)&d_a, size);
   cudaMalloc((void **)&d_b, size);
