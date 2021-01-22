@@ -4,9 +4,11 @@
 #define N 1000
 
 int main(int argc, char** argv) {
-  
+
   // Kokkos init
-  Kokkos::initialize(argc, argv);
+  // 4 kokkos threads
+  // 1 numa
+  Kokkos::initialize(Kokkos::InitArguments(4,1));
 
   double array[N];
   
@@ -17,7 +19,7 @@ int main(int argc, char** argv) {
   double sum = 0;
 
   // Kokkos parallel reduction
-  Kokkos::parallel_reduce(N, [=](const int i, double& update) {
+  Kokkos::parallel_reduce(N, KOKKOS_LAMBDA (const int i, double& update) {
     update += array[i];
   }, sum);
 
